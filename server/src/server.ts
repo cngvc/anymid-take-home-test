@@ -6,6 +6,7 @@ import { Application, json, urlencoded } from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import http from 'http';
+import { config } from './config';
 import { redisRateLimiterStrategy } from './middleware/redis-rate-limit.middleware';
 
 export class UserServer {
@@ -27,7 +28,7 @@ export class UserServer {
     this.app.use(helmet());
     this.app.use(
       cors({
-        origin: '*',
+        origin: config.NODE_ENV === 'development' ? '*' : config.CLIENT_URL,
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
       })
