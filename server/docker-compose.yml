@@ -1,0 +1,24 @@
+version: '3.9'
+name: 'anymid-hw'
+services:
+  redis:
+    container_name: redis_container
+    image: redis:alpine
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    command: redis-server --loglevel warning
+    volumes:
+      - redis-data:/data
+  mongodb:
+    container_name: mongodb_container
+    image: mongo:7-jammy
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  redis-data:
+  mongodb-data:
