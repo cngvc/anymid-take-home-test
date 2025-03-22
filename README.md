@@ -1,3 +1,9 @@
-endpoint: http://localhost:3001/api/v1/aggregated-data
+Endpoint: http://localhost:3001/api/v1/aggregated-data
 
-[Demo Image](screenshot.png)
+![Demo Image](./screenshot.png)
+
+DB setup
+
+```
+cd server && docker-compose up -d
+```
